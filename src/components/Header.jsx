@@ -1,82 +1,137 @@
-import { useState } from "react";
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaUser } from "react-icons/fa";
+import { useState, useEffect, useRef } from "react";
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaUser, FaSearch } from "react-icons/fa";
 
-function Header() {
+export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
+  const loginRef = useRef(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  // Lista de exemplo para pesquisa
+  const vagas = [
+    { id: 1, titulo: "Professor de Matemática" },
+    { id: 2, titulo: "Auxiliar Administrativo" },
+    { id: 3, titulo: "Engenheiro Civil" },
+    { id: 4, titulo: "Técnico de Informática" },
+    { id: 5, titulo: "Psicólogo Escolar" },
+    { id: 6, titulo: "Coordenador Pedagógico" },
+    { id: 7, titulo: "Assistente Social" },
+    { id: 8, titulo: "Motorista Categoria D" },
+    { id: 9, titulo: "Agente de Saúde" },
+    { id: 10, titulo: "Recepcionista" },
+  ];
+
+  // Fecha o menu de login ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (loginRef.current && !loginRef.current.contains(e.target)) {
+        setShowLogin(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Pesquisa funcional
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (!searchQuery) {
+      setSearchResults([]);
+      return;
+    }
+    const results = vagas.filter((vaga) =>
+      vaga.titulo.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setSearchResults(results);
+  };
 
   return (
-    <header className="bg-blue-400 text-white p-4 shadow relative">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        {/* Título */}
-        <h1 className="text-4xl font-bold mb-3 md:mb-0 text-center">
-          Prefeitura de Araxá
-        </h1>
-
-        {/* Menu */}
-        <nav className="flex items-center gap-6">
-          <ul className="flex gap-6">
-            <li>
-              <a
-                href="#sobre"
-                className="relative px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105"
-              >
-                Sobre
-              </a>
-            </li>
-            <li>
-              <a
-                href="#vagas"
-                className="relative px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105"
-              >
-                Vagas de Emprego
-              </a>
-            </li>
-          </ul>
-
-          {/* Ícones redes sociais */}
-          <div className="flex gap-3 ml-6">
-            <a href="https://www.facebook.com" target="_blank" className="hover:text-black transition transform hover:scale-125">
-              <FaFacebookF size={20} />
-            </a>
-            <a href="https://www.instagram.com" target="_blank" className="hover:text-black transition transform hover:scale-125">
-              <FaInstagram size={20} />
-            </a>
-            <a href="https://wa.me/5511999999999" target="_blank" className="hover:text-black transition transform hover:scale-125">
-              <FaWhatsapp size={20} />
-            </a>
-          </div>
-
-          {/* Ícone login */}
-          <button
-            onClick={() => setShowLogin(!showLogin)}
-            className="ml-4 hover:text-black transition transform hover:scale-125 relative"
-          >
-            <FaUser size={22} />
-          </button>
-        </nav>
+    <header className="bg-blue-400 text-white shadow relative z-50">
+      {/* Linha superior: telefone e redes sociais */}
+      <div className="flex justify-between items-center px-4 py-1 text-sm bg-blue-500">
+        <div>📞 (68) 3669-0503</div>
+        <div className="flex gap-3">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+            <FaFacebookF size={18} />
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+            <FaInstagram size={18} />
+          </a>
+          <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+            <FaWhatsapp size={18} />
+          </a>
+        </div>
       </div>
 
-      {/* Menu/Login */}
-      {showLogin && (
-        <div className="absolute top-full right-4 mt-2 w-60 bg-white text-black shadow-lg rounded-lg p-4">
-          <h2 className="text-lg font-bold mb-2">Entrar</h2>
-          <input
-            type="text"
-            placeholder="Usuário"
-            className="w-full border p-2 rounded mb-2"
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            className="w-full border p-2 rounded mb-3"
-          />
-          <button className="w-full bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
-            Login
-          </button>
+      {/* Linha inferior: nome à esquerda, pesquisa no centro, navegação + login à direita */}
+      <div className="flex items-center justify-between px-4 py-4 relative">
+        {/* Nome da prefeitura à esquerda */}
+        <div className="text-4xl font-bold text-left">
+          Oportuniza
         </div>
-      )}
+
+        {/* Barra de pesquisa no centro */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-3xl">
+          <form
+            onSubmit={handleSearch}
+            className="flex items-center bg-white text-black rounded overflow-hidden w-full shadow-md"
+          >
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Pesquisar..."
+              className="px-3 py-2 text-sm focus:outline-none text-black w-full"
+            />
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 text-sm flex items-center justify-center"
+            >
+              <FaSearch size={14} />
+            </button>
+          </form>
+
+          {/* Resultados da pesquisa ampliados */}
+          {searchResults.length > 0 && (
+            <div className="absolute left-0 mt-2 w-full max-h-[70vh] bg-white text-black shadow-2xl rounded-lg overflow-auto border border-gray-300 p-4">
+              <h2 className="text-xl font-bold mb-4 text-center">Vagas Encontradas</h2>
+              {searchResults.map((vaga) => (
+                <div
+                  key={vaga.id}
+                  className="p-3 border-b hover:bg-gray-100 cursor-pointer text-base"
+                >
+                  {vaga.titulo}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Navegação + login à direita */}
+        <nav className="flex items-center gap-6 w-1/3 justify-end relative">
+          <ul className="flex gap-6">
+            <li><a href="#sobre" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Sobre</a></li>
+            <li><a href="#vagas" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Vagas de Emprego</a></li>
+          </ul>
+
+          {/* Login */}
+          <div className="relative" ref={loginRef}>
+            <button onClick={() => setShowLogin((prev) => !prev)} className="ml-4 hover:text-black transition transform hover:scale-125">
+              <FaUser size={22} />
+            </button>
+
+            {showLogin && (
+              <div className="absolute top-full right-0 mt-2 w-60 bg-white text-black shadow-lg rounded-lg p-4">
+                <h2 className="text-lg font-bold mb-2">Entrar</h2>
+                <input type="text" placeholder="Usuário" className="w-full border p-2 rounded mb-2" />
+                <input type="password" placeholder="Senha" className="w-full border p-2 rounded mb-3" />
+                <button className="w-full bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">Login</button>
+              </div>
+            )}
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }
 
-export default Header;
