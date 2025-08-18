@@ -52,26 +52,31 @@ export default function Header() {
         <div>📞 (68) 3669-0503</div>
         <div className="flex gap-3">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaFacebookF size={18} />
+            <FaFacebookF size={20} />
           </a>
           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaInstagram size={18} />
+            <FaInstagram size={20} />
           </a>
           <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaWhatsapp size={18} />
+            <FaWhatsapp size={20} />
           </a>
         </div>
       </div>
 
-      {/* Linha inferior: nome à esquerda, pesquisa no centro, navegação + login à direita */}
-      <div className="flex items-center justify-between px-4 py-4 relative">
-        {/* Nome da prefeitura à esquerda */}
-        <div className="text-4xl font-bold text-left">
-          Oportuniza
+      {/* Conteúdo principal */}
+      <div className="flex items-center justify-between px-4 py-4">
+        {/* Nome da empresa e lema alinhados à esquerda */}
+        <div className="text-left">
+          <div className="text-4xl font-bold">
+            Oportuniza
+          </div>
+          <div className="text-xl font-medium mt-2">
+            Conectando talentos a oportunidades, transformando vidas e carreiras.
+          </div>
         </div>
 
         {/* Barra de pesquisa no centro */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-3xl">
+        <div className="absolute left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-xl">
           <form
             onSubmit={handleSearch}
             className="flex items-center bg-white text-black rounded overflow-hidden w-full shadow-md"
@@ -108,7 +113,7 @@ export default function Header() {
         </div>
 
         {/* Navegação + login à direita */}
-        <nav className="flex items-center gap-6 w-1/3 justify-end relative">
+        <nav className="flex items-center gap-6">
           <ul className="flex gap-6">
             <li><a href="#sobre" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Sobre</a></li>
             <li><a href="#vagas" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Vagas de Emprego</a></li>
@@ -134,4 +139,4 @@ export default function Header() {
     </header>
   );
 }
-
+import React from "react";

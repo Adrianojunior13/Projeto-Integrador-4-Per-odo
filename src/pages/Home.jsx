@@ -4,13 +4,15 @@ import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 // Componente para cada vaga
 function JobItem({ job }) {
   return (
-    <div className="p-4 border rounded shadow-sm hover:shadow-md transition duration-300 bg-gray-50">
+    <div className="p-6 border rounded shadow-sm hover:shadow-md transition duration-300 bg-gray-50 flex flex-col items-start">
       <h3 className="text-lg font-semibold">{job.titulo}</h3>
       <p className="text-sm text-gray-700">{job.empresa}</p>
       <p className="text-sm text-gray-500">{job.local}</p>
-      <button className="mt-2 bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm transition">
-        Candidatar-se
-      </button>
+      <div className="w-full flex justify-center mt-4">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition">
+          Candidatar-se
+        </button>
+      </div>
     </div>
   );
 }
@@ -18,7 +20,7 @@ function JobItem({ job }) {
 // Componente JobList
 function JobList({ jobs }) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {jobs.map((job, index) => (
         <JobItem key={index} job={job} />
       ))}
@@ -45,7 +47,7 @@ function Footer() {
             <p>Av. Rosália Isaura Araújo, 275</p>
             <p>Centro Administrativo</p>
             <p>Vila das Palmeiras/MG</p>
-            <p>38.180-802</p>
+            <p>38.000-157</p>
             <p>ouvidoria@oportuniza.com</p>
             <p>(68) 3669-0503 • (68) 99257-0977</p>
             <p>12h às 18h - Segunda a Sexta</p>
@@ -73,12 +75,7 @@ function Footer() {
       {/* Seção Inferior */}
       <div className="bg-blue-400 text-white text-sm py-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-center items-center">
-          {/* Direitos Reservados */}
-          <p>&copy; {new Date().getFullYear()} Oportuniza . Todos os direitos reservados.</p>
-          {/* Links adicionais */}
-          <div className="flex gap-4">
-            {/* Aqui podem ser adicionados links como "Mapa do site" ou outros se necessário */}
-          </div>
+          <p>&copy; {new Date().getFullYear()} Oportuniza. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
@@ -95,10 +92,13 @@ function Home() {
   ]);
 
   return (
-    <div className="space-y-12 p-6 bg-gray-100 min-h-screen flex flex-col">
+    <div className="space-y-12 p-6 bg-gray-100 min-h-screen flex flex-col items-center">
       {/* Vagas de Emprego */}
-      <section id="vagas" className="p-6 bg-white rounded shadow">
-        <h2 className="text-2xl font-bold mb-4">Vagas de Emprego</h2>
+      <section
+        id="vagas"
+        className="p-8 bg-white rounded shadow w-full max-w-screen-2xl mx-auto"
+      >
+        <h2 className="text-3xl font-bold mb-8 text-center">Vagas de Emprego</h2>
         <JobList jobs={vagas} />
       </section>
 
@@ -109,3 +109,4 @@ function Home() {
 }
 
 export default Home;
+
