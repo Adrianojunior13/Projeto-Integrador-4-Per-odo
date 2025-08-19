@@ -71,7 +71,7 @@ export default function Header() {
             Oportuniza
           </div>
           <div className="text-xl font-medium mt-2">
-            Conectando talentos a oportunidades, transformando vidas e carreiras.
+            Conectando talentos a oportunidades, transformando vidas e carreiras!!
           </div>
         </div>
 
