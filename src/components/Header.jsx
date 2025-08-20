@@ -9,7 +9,7 @@ function Header() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Título */}
         <h1 className="text-4xl font-bold mb-3 md:mb-0 text-center">
-          Prefeitura de Araxá
+          Prefeitura de Vila das Palmeiras
         </h1>
 
         {/* Menu */}
