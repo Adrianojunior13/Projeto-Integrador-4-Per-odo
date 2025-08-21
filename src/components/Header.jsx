@@ -46,7 +46,7 @@ export default function Header() {
     <header className="bg-blue-400 text-white shadow relative z-50">
       {/* Linha superior */}
       <div className="flex justify-between items-center px-4 py-1 text-sm bg-blue-500">
-        <div>📞 (68) 3669-0503</div>
+        <div>📞 (68) 3669</div>
         <div className="flex gap-3">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
             <FaFacebookF size={25} />
