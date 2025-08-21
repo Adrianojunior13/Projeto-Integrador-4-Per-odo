@@ -49,13 +49,13 @@ export default function Header() {
         <div>📞 (68) 3669-0503</div>
         <div className="flex gap-3">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaFacebookF size={20} />
+            <FaFacebookF size={25} />
           </a>
           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaInstagram size={20} />
+            <FaInstagram size={25} />
           </a>
           <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaWhatsapp size={20} />
+            <FaWhatsapp size={25} />
           </a>
         </div>
       </div>
@@ -65,10 +65,7 @@ export default function Header() {
         {/* Esquerda: Logo e lema */}
         <div className="w-full md:w-1/3 text-left">
           {/* Substituindo texto por imagem */}
-          <img src="/logo.jpeg" alt="Logo Oportuniza" className="w-auto h-24" />
-          <div className="text-xl font-medium mt-2">
-            Conectando talentos a oportunidades, transformando vidas e carreiras!!
-          </div>
+          <img src="/logo.jpeg" alt="Logo Oportuniza" className="w-auto h-14" />
         </div>
 
         {/* Centro: Barra de pesquisa */}
