@@ -43,30 +43,38 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-500 text-white shadow relative z-50">
-      {/* Linha superior */}
-      <div className="flex justify-between items-center px-4 py-1 text-sm bg-blue-400">
-        <div>📞 (34) 3664-3500</div>
-        <div className="flex gap-3">
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaFacebookF size={25} />
-          </a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaInstagram size={25} />
-          </a>
-          <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-            <FaWhatsapp size={25} />
-          </a>
-        </div>
+  <header className="bg-blue-500 text-white shadow relative z-50">
+    <div className="flex justify-between items-center px-40 py-2 text-sm bg-blue-400 h-[50px]">
+      {/* Número de telefone à esquerda */}
+      <div className="ml-24 flex items-center">
+        📞 (34) 3661-5533
       </div>
 
-      {/* Linha principal do header */}
-      <div className="flex items-center justify-between px-4 py-4 flex-wrap gap-y-4">
-        {/* Esquerda: Logo e lema */}
-        <div className="w-full md:w-1/3 text-left">
-          {/* Substituindo texto por imagem */}
-          <img src="/logo.png" alt="Logo Oportuniza" className="w-55 h-20" />
-        </div>
+      {/* Centro: Horário de funcionamento */}
+      <div className="flex-grow text-center">
+        HORÁRIO DE FUNCIONAMENTO: Segunda a Sexta das 08h às 18h
+      </div>
+
+      {/* Ícones de redes sociais à direita */}
+      <div className="flex gap-3 justify-end items-center">
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+          <FaFacebookF size={22} />
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+          <FaInstagram size={22} />
+        </a>
+        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+          <FaWhatsapp size={22} />
+        </a>
+      </div>
+    </div>
+
+    {/* Linha principal do header */}
+    <div className="flex justify-between items-center px-40 py-3 flex-wrap gap-y-4">
+      {/* Esquerda: Logo */}
+      <div className="ml-24 flex items-center">
+        <img src="/logo.png" alt="Logo Oportuniza" className="w-55 h-20" />
+      </div>
 
         {/* Centro: Barra de pesquisa */}
         <div className="w-full md:w-1/3 flex justify-center">
@@ -109,11 +117,10 @@ export default function Header() {
 
         {/* Direita: Navegação e login */}
         <nav className="w-full md:w-1/3 flex justify-end items-center gap-6">
-          <ul className="flex gap-6">
-            <li><a href="#sobre" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Sobre</a></li>
-            <li><a href="#vagas" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Vagas de Emprego</a></li>
-            <li><a href="#oportunidades" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Oportunidades</a></li>
-
+          <ul className="flex gap">
+            <li><a href="#aOportuniza" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">A OPORTUNIZA</a></li>
+            <li><a href="#vagas" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">VAGAS DE EMPREGO</a></li>
+            <li><a href="#contato" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">CONTATO</a></li>
           </ul>
 
           <div className="relative" ref={loginRef}>
@@ -127,7 +134,6 @@ export default function Header() {
                 <input type="text" placeholder="Usuário" className="w-full border p-2 rounded mb-2" />
                 <input type="password" placeholder="Senha" className="w-full border p-2 rounded mb-3" />
                 <button className="w-full bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">Login</button>
-                
               </div>
             )}
           </div>
