@@ -112,11 +112,13 @@ export default function Header() {
           <ul className="flex gap-6">
             <li><a href="#sobre" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Sobre</a></li>
             <li><a href="#vagas" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Vagas de Emprego</a></li>
+            <li><a href="#oportunidades" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">Oportunidades</a></li>
+
           </ul>
 
           <div className="relative" ref={loginRef}>
             <button onClick={() => setShowLogin((prev) => !prev)} className="ml-4 hover:text-black transition transform hover:scale-125">
-              <FaUser size={20} />
+              <FaUser size={18} />
             </button>
 
             {showLogin && (
@@ -125,6 +127,7 @@ export default function Header() {
                 <input type="text" placeholder="Usuário" className="w-full border p-2 rounded mb-2" />
                 <input type="password" placeholder="Senha" className="w-full border p-2 rounded mb-3" />
                 <button className="w-full bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">Login</button>
+                
               </div>
             )}
           </div>
