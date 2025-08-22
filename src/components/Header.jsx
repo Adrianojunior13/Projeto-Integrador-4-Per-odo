@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaUser, FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";  // Importando o Link do React Router
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
@@ -43,38 +44,38 @@ export default function Header() {
   };
 
   return (
-  <header className="bg-blue-700 text-white shadow relative z-50">
-    <div className="flex justify-between items-center px-40 py-2 text-sm bg-blue-500 h-[50px]">
-      {/* Número de telefone à esquerda */}
-      <div className="ml-24 flex items-center">
-        📞 (34) 3661-5533
+    <header className="bg-blue-700 text-white shadow relative z-50">
+      <div className="flex justify-between items-center px-40 py-2 text-sm bg-blue-500 h-[50px]">
+        {/* Número de telefone à esquerda */}
+        <div className="ml-24 flex items-center">
+          📞 (34) 3661-5533
+        </div>
+
+        {/* Centro: Horário de funcionamento */}
+        <div className="flex-grow text-center">
+          HORÁRIO DE FUNCIONAMENTO: Segunda a Sexta das 08h às 18h
+        </div>
+
+        {/* Ícones de redes sociais à direita */}
+        <div className="flex gap-3 justify-end items-center">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+            <FaFacebookF size={22} />
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+            <FaInstagram size={22} />
+          </a>
+          <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
+            <FaWhatsapp size={22} />
+          </a>
+        </div>
       </div>
 
-      {/* Centro: Horário de funcionamento */}
-      <div className="flex-grow text-center">
-        HORÁRIO DE FUNCIONAMENTO: Segunda a Sexta das 08h às 18h
-      </div>
-
-      {/* Ícones de redes sociais à direita */}
-      <div className="flex gap-3 justify-end items-center">
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-          <FaFacebookF size={22} />
-        </a>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-          <FaInstagram size={22} />
-        </a>
-        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
-          <FaWhatsapp size={22} />
-        </a>
-      </div>
-    </div>
-
-    {/* Linha principal do header */}
-    <div className="flex justify-between items-center px-40 py-3 flex-wrap gap-y-4">
-      {/* Esquerda: Logo */}
-      <div className="ml-24 flex items-center">
-        <img src="/logo.png" alt="Logo Oportuniza" className="w-55 h-20" />
-      </div>
+      {/* Linha principal do header */}
+      <div className="flex justify-between items-center px-40 py-3 flex-wrap gap-y-4">
+        {/* Esquerda: Logo */}
+        <div className="ml-24 flex items-center">
+          <img src="/logo.png" alt="Logo Oportuniza" className="w-55 h-20" />
+        </div>
 
         {/* Centro: Barra de pesquisa */}
         <div className="w-full md:w-1/3 flex justify-center">
@@ -118,9 +119,21 @@ export default function Header() {
         {/* Direita: Navegação e login */}
         <nav className="w-full md:w-1/3 flex justify-end items-center gap-6">
           <ul className="flex gap">
-            <li><a href="#aOportuniza" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">A OPORTUNIZA</a></li>
-            <li><a href="#vagas" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">VAGAS DE EMPREGO</a></li>
-            <li><a href="#contato" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">CONTATO</a></li>
+            <li>
+              <Link to="/oportuniza" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">
+                A OPORTUNIZA
+              </Link>
+            </li>
+            <li>
+              <Link to="/vagas" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">
+                VAGAS DE EMPREGO
+              </Link>
+            </li>
+            <li>
+              <Link to="/contato" className="px-2 py-1 hover:text-black transition duration-300 transform hover:scale-105">
+                CONTATO
+              </Link>
+            </li>
           </ul>
 
           <div className="relative" ref={loginRef}>
