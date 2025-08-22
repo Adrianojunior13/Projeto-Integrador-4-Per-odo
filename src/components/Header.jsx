@@ -43,8 +43,8 @@ export default function Header() {
   };
 
   return (
-  <header className="bg-blue-500 text-white shadow relative z-50">
-    <div className="flex justify-between items-center px-40 py-2 text-sm bg-blue-400 h-[50px]">
+  <header className="bg-blue-700 text-white shadow relative z-50">
+    <div className="flex justify-between items-center px-40 py-2 text-sm bg-blue-500 h-[50px]">
       {/* Número de telefone à esquerda */}
       <div className="ml-24 flex items-center">
         📞 (34) 3661-5533
@@ -92,7 +92,7 @@ export default function Header() {
               />
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 text-sm flex items-center justify-center"
+                className="bg-blue-400 hover:bg-blue-700 text-white px-4 py-2 text-sm flex items-center justify-center"
               >
                 <FaSearch size={14} />
               </button>
