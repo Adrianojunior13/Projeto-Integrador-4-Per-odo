@@ -43,9 +43,9 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-400 text-white shadow relative z-50">
+    <header className="bg-blue-500 text-white shadow relative z-50">
       {/* Linha superior */}
-      <div className="flex justify-between items-center px-4 py-1 text-sm bg-blue-500">
+      <div className="flex justify-between items-center px-4 py-1 text-sm bg-blue-400">
         <div>📞 (34) 3664-3500</div>
         <div className="flex gap-3">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
@@ -65,12 +65,12 @@ export default function Header() {
         {/* Esquerda: Logo e lema */}
         <div className="w-full md:w-1/3 text-left">
           {/* Substituindo texto por imagem */}
-          <img src="/logo.jpeg" alt="Logo Oportuniza" className="w-auto h-14" />
+          <img src="/logo.png" alt="Logo Oportuniza" className="w-55 h-20" />
         </div>
 
         {/* Centro: Barra de pesquisa */}
         <div className="w-full md:w-1/3 flex justify-center">
-          <div className="w-full max-w-sm">
+          <div className="w-2/3 max-w-xs">
             <form
               onSubmit={handleSearch}
               className="flex items-center bg-white text-black rounded overflow-hidden w-full shadow-md"
@@ -116,7 +116,7 @@ export default function Header() {
 
           <div className="relative" ref={loginRef}>
             <button onClick={() => setShowLogin((prev) => !prev)} className="ml-4 hover:text-black transition transform hover:scale-125">
-              <FaUser size={22} />
+              <FaUser size={20} />
             </button>
 
             {showLogin && (
