@@ -51,11 +51,6 @@ export default function Header() {
           📞 (34) 3661-5533
         </div>
 
-        {/* Centro: Horário de funcionamento */}
-        <div className="flex-grow text-center">
-          HORÁRIO DE FUNCIONAMENTO: Segunda a Sexta das 08h às 18h
-        </div>
-
         {/* Ícones de redes sociais à direita */}
         <div className="flex gap-3 justify-end items-center">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
