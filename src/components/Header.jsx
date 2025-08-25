@@ -72,10 +72,10 @@ export default function Header() {
 
       {/* Linha principal do header */}
       <div className="flex justify-between items-center px-40 py-3 flex-wrap gap-y-4">
-        {/* Esquerda: Logo */}
-        <div className="ml-24 flex items-center">
+        {/* Esquerda: Logo com Link */}
+        <Link to="/" className="ml-24 flex items-center">
           <img src="/logo.png" alt="Logo Oportuniza" className="w-55 h-20" />
-        </div>
+        </Link>
 
         {/* Centro: Barra de pesquisa */}
         <div className="w-full md:w-1/3 flex justify-center">

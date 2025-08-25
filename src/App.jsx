@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; 
 import Header from "./components/Header";
 import JobSearch from "./components/JobSearch";
 import Sidebar from "./components/Sidebar";
@@ -13,29 +13,31 @@ function App() {
       {/* Cabeçalho */}
       <Header />
 
-      {/* Definindo as rotas */}
+      {/* Rotas */}
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Página inicial */}
-        <Route path="/oportuniza" element={<OportunizaPage />} /> {/* Página A OPORTUNIZA */}
-        <Route path="/vagas" element={<VagasPage />} /> {/* Página VAGAS DE EMPREGO */}
-        <Route path="/contato" element={<ContatoPage />} /> {/* Página CONTATO */}
+        {/* Página inicial */}
+        <Route
+          path="/"
+          element={
+            <main className="flex-1 max-w-6xl mx-auto p-4">
+              <JobSearch />
+              <div className="flex flex-col md:flex-row gap-6 mt-4">
+                <div className="flex-1">
+                  <Home />
+                </div>
+                <div className="w-full md:w-72">
+                  <Sidebar />
+                </div>
+              </div>
+            </main>
+          }
+        />
+
+        {/* Outras páginas */}
+        <Route path="/oportuniza" element={<OportunizaPage />} />
+        <Route path="/vagas" element={<VagasPage />} />
+        <Route path="/contato" element={<ContatoPage />} />
       </Routes>
-
-      {/* Conteúdo principal */}
-      <main className="flex-1 max-w-6xl mx-auto p-4">
-        {/* Busca de empregos */}
-        <JobSearch />
-
-        {/* Conteúdo principal + barra lateral */}
-        <div className="flex flex-col md:flex-row gap-6 mt-4">
-          <div className="flex-1">
-            <Home />
-          </div>
-          <div className="w-full md:w-72">
-            <Sidebar />
-          </div>
-        </div>
-      </main>
     </div>
   );
 }
