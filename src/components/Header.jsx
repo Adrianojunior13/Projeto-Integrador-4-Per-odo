@@ -48,7 +48,7 @@ export default function Header() {
       <div className="flex justify-between items-center px-40 py-2 text-sm bg-blue-500 h-[50px]">
         {/* Número de telefone à esquerda */}
         <div className="ml-24 flex items-center">
-          📞 (34) 3661-5533
+          📞 (68) 3661-5533
         </div>
 
         {/* Ícones de redes sociais à direita */}
