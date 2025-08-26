@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'; 
 import Header from "./components/Header";
-import JobSearch from "./components/JobSearch";
-import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import OportunizaPage from './pages/OportunizaPage';
 import VagasPage from './pages/VagasPage';
 import ContatoPage from './pages/ContatoPage';
+import JobSearch from "./components/JobSearch";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
@@ -15,15 +15,18 @@ function App() {
 
       {/* Rotas */}
       <Routes>
-        {/* Página inicial */}
+        {/* Página inicial - só imagem */}
+        <Route path="/" element={<Home />} />
+
+        {/* Página Vagas - inclui busca, filtros e sidebar */}
         <Route
-          path="/"
+          path="/vagas"
           element={
             <main className="flex-1 max-w-6xl mx-auto p-4">
               <JobSearch />
               <div className="flex flex-col md:flex-row gap-6 mt-4">
                 <div className="flex-1">
-                  <Home />
+                  <VagasPage />
                 </div>
                 <div className="w-full md:w-72">
                   <Sidebar />
@@ -35,7 +38,6 @@ function App() {
 
         {/* Outras páginas */}
         <Route path="/oportuniza" element={<OportunizaPage />} />
-        <Route path="/vagas" element={<VagasPage />} />
         <Route path="/contato" element={<ContatoPage />} />
       </Routes>
     </div>
@@ -43,3 +45,4 @@ function App() {
 }
 
 export default App;
+
