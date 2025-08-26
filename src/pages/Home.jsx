@@ -66,7 +66,7 @@ function Home() {
         <img
           src="public/oportuniza.png" // coloque aqui o caminho da imagem salva no seu projeto
           alt="Oportuniza"
-          className="w-full object-cover h-[80vh]" 
+          className="w-full object-cover h-[100vh]" 
         />
       </main>
 
