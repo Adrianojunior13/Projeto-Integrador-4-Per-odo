@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 function Home() {
   // Array com as imagens do background
-  const imagens = ["/oportuniza.png", "/oportuniza1.png"];
+  const imagens = ["public/oportuniza.png", "public/oportuniza1.png"];
   const [index, setIndex] = useState(0);
 
   // Troca automática a cada 5 segundos
