@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"; // IMPORTANTE
+
 function Home() {
   return (
     <div className="relative w-full">
@@ -8,7 +10,7 @@ function Home() {
         className="w-full h-[60vh] sm:h-[80vh] md:h-[70vh] lg:h-[90vh] xl:h-[100vh] object-cover object-top"
       />
 
-      {/* Gradiente opcional para legibilidade */}
+      {/* Gradiente opcional */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
 
       {/* Conteúdo sobreposto */}
@@ -20,12 +22,19 @@ function Home() {
           Conectamos talentos às melhores oportunidades de trabalho
         </p>
         <div className="flex gap-4 flex-wrap justify-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded">
-            Ver Vagas
-          </button>
-          <button className="bg-white text-gray-800 hover:bg-gray-100 font-semibold py-2 px-6 rounded">
-            Publicar Vaga
-          </button>
+          {/* Botão que leva para /vagas */}
+          <Link to="/vagas">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded">
+              Ver Vagas
+            </button>
+          </Link>
+
+          {/* Botão "Sobre nós" (ainda sem link definido) */}
+          <Link to="/oportuniza">
+            <button className="bg-white text-gray-800 hover:bg-gray-100 font-semibold py-2 px-6 rounded">
+              Sobre nós
+            </button>
+          </Link>
         </div>
       </div>
     </div>
