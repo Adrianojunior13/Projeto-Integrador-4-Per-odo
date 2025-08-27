@@ -1,15 +1,13 @@
-// VagasPage.jsx
 import { useState } from "react";
-import Footer from "../components/Footer";
 
 function JobItem({ job }) {
   return (
-    <div className="p-6 border rounded shadow-sm hover:shadow-md transition duration-300 bg-gray-50 flex flex-col items-start">
-      <h3 className="text-lg font-semibold">{job.titulo}</h3>
-      <p className="text-sm text-gray-700">{job.empresa}</p>
-      <p className="text-sm text-gray-500">{job.local}</p>
+    <div className="p-4 sm:p-6 border rounded shadow-sm hover:shadow-md transition duration-300 bg-gray-50 flex flex-col items-start">
+      <h3 className="text-lg sm:text-xl font-semibold">{job.titulo}</h3>
+      <p className="text-sm sm:text-base text-gray-700">{job.empresa}</p>
+      <p className="text-sm sm:text-base text-gray-500">{job.local}</p>
       <div className="w-full flex justify-center mt-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm sm:text-base transition">
           Candidatar-se
         </button>
       </div>
@@ -19,7 +17,7 @@ function JobItem({ job }) {
 
 function JobList({ jobs }) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {jobs.map((job, index) => (
         <JobItem key={index} job={job} />
       ))}
@@ -52,16 +50,14 @@ export default function VagasPage() {
   ]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
-      <main className="flex-1 p-8 w-full max-w-screen-2xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Vagas de Emprego</h2>
+    <div className="flex flex-col min-h-screen bg-gray-100 px-4 py-8">
+      <main className="flex-1 w-full max-w-screen-2xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
+          Vagas de Emprego
+        </h2>
         <JobList jobs={vagas} />
       </main>
-
-      <Footer />
     </div>
   );
 }
-
-
 
