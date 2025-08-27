@@ -7,7 +7,7 @@ function JobItem({ job }) {
       <p className="text-sm sm:text-base text-gray-700">{job.empresa}</p>
       <p className="text-sm sm:text-base text-gray-500">{job.local}</p>
       <div className="w-full flex justify-center mt-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm sm:text-base transition">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm sm:text-base transition w-full sm:w-auto">
           Candidatar-se
         </button>
       </div>
@@ -17,7 +17,7 @@ function JobItem({ job }) {
 
 function JobList({ jobs }) {
   return (
-    <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {jobs.map((job, index) => (
         <JobItem key={index} job={job} />
       ))}
@@ -52,7 +52,7 @@ export default function VagasPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 px-4 py-8">
       <main className="flex-1 w-full max-w-screen-2xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
           Vagas de Emprego
         </h2>
         <JobList jobs={vagas} />
