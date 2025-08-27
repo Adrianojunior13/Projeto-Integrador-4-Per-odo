@@ -1,13 +1,26 @@
-import { Link } from "react-router-dom"; // IMPORTANTE
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Home() {
+  // Array com as imagens do background
+  const imagens = ["/oportuniza.png", "/oportuniza1.png"];
+  const [index, setIndex] = useState(0);
+
+  // Troca automática a cada 5 segundos
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setIndex((prev) => (prev + 1) % imagens.length);
+    }, 10000);
+    return () => clearInterval(intervalo);
+  }, [imagens.length]);
+
   return (
     <div className="relative w-full">
-      {/* Imagem de fundo */}
+      {/* Imagem de fundo dinâmica */}
       <img
-        src="/oportuniza.png"
+        src={imagens[index]}
         alt="Oportuniza"
-        className="w-full h-[60vh] sm:h-[80vh] md:h-[70vh] lg:h-[90vh] xl:h-[100vh] object-cover object-top"
+        className="w-full h-[60vh] sm:h-[80vh] md:h-[70vh] lg:h-[90vh] xl:h-[100vh] object-cover object-top transition-opacity duration-1000"
       />
 
       {/* Gradiente opcional */}
@@ -29,10 +42,10 @@ function Home() {
             </button>
           </Link>
 
-          {/* Botão "Sobre nós" (ainda sem link definido) */}
+          {/* Botão "Quem somos" */}
           <Link to="/oportuniza">
             <button className="bg-white text-gray-800 hover:bg-gray-100 font-semibold py-2 px-6 rounded">
-              Sobre nós
+              Quem somos
             </button>
           </Link>
         </div>
