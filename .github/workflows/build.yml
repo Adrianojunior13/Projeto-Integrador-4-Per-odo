@@ -18,15 +18,17 @@ jobs:
       - name: dkjd
         run: ls
       
-      - name: (FRONT) - 🛑 Desligar e remover serviços antigos (containers e imagens)
-        working-directory: .
-        run: docker compose down --rmi all --volumes || true # Este comando já é suficiente para o escopo do frontend
+      - name: (FRONT) - 🛑 Desligar e remover serviços antigos
+        run: docker compose -f docker-compose.dev.yml down --rmi all --volumes || true
 
       - name: (FRONT) - 🚀 Reconstruir e rodar com Docker Compose (sem cache)
-        working-directory: .
-        run: docker compose up --build -d
+        run: docker compose -f docker-compose.dev.yml up --build -d
+
 
       # REMOVIDO: - 🧹 Limpeza completa do sistema Docker (era agressivo)
       # - name: (FRONT) - 🧹 Limpeza completa do sistema Docker
       #   if: always()
       #   run: docker system prune -af
+
+
+
