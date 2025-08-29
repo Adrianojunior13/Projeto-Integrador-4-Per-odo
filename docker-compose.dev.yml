@@ -1,6 +1,11 @@
 name: "oportuniza-front-dev"
 version: '3.8'
 
+networks:
+  oportuniza_net_dev:
+    driver: bridge
+
+
 services:
   app:
     image: i_oportuniza_front_dev
@@ -13,4 +18,3 @@ services:
     restart: unless-stopped
     networks:
       - oportuniza_net_dev
-
