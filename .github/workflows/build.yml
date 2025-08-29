@@ -16,6 +16,7 @@ jobs:
 
       #FRONTEND ----------------------------------------------------------------------------
       - name: (FRONT) - 🛑 Desligar e remover serviços antigos (containers e imagens)
+        run: ls
         working-directory: ./app
         run: docker compose down --rmi all --volumes || true # Este comando já é suficiente para o escopo do frontend
 
