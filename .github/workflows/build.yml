@@ -15,8 +15,10 @@ jobs:
         uses: actions/checkout@v4
 
       #FRONTEND ----------------------------------------------------------------------------
-      - name: (FRONT) - 🛑 Desligar e remover serviços antigos (containers e imagens)
+      - name: dkjd
         run: ls
+      
+      - name: (FRONT) - 🛑 Desligar e remover serviços antigos (containers e imagens)
         working-directory: ./app
         run: docker compose down --rmi all --volumes || true # Este comando já é suficiente para o escopo do frontend
 
