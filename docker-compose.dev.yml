@@ -1,0 +1,19 @@
+name: "oportuniza-front-dev"
+version: '3.8'
+
+networks:
+  oportuniza_net_dev:
+    external: true
+
+services:
+  app:
+    image: i_oportuniza_front_dev
+    container_name: c_oportuniza_front_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9000:3000"
+    restart: unless-stopped
+    networks:
+      - oportuniza_net_dev
