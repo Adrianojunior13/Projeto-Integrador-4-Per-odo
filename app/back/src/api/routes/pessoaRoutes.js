@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-
-const pessoaController = require('../controllers/pessoaController');
+const pessoaController = require('../controllers/pessoaController.js');
 
 
 // Rota para criar uma pessoa (POST /api/pessoas)

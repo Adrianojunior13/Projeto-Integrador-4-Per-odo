@@ -1,33 +1,22 @@
 // app.js
-const express = require('express');
-const sequelize = require('./src/config/database');
-const pessoaRoutes = require('./src/api/routes/pessoaRoutes');
+import express from "express";
+import sequelize from "./src/config/database.js";
+import pessoaRoutes from "./src/api/routes/pessoaRoutes.js";
 
-// Cria o app Express
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
-// Middleware para JSON
 app.use(express.json());
+app.use("/api", pessoaRoutes);
 
-// Rotas
-app.use('/api', pessoaRoutes);
-
-// Função para iniciar o servidor
-const startServer = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('Conexão com o banco estabelecida com sucesso.');
-
-        await sequelize.sync({ force: false });
-        console.log('Banco de dados sincronizado.');
-
-        app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
-        });
-    } catch (error) {
-        console.error('Não foi possível conectar ao banco de dados:', error);
-    }
-};
-
-startServer();
+// garante sincronização com banco
+sequelize.sync()
+  .then(() => {
+    console.log("Banco sincronizado com sucesso!");
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando em http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Erro ao sincronizar o banco:", err);
+  });
