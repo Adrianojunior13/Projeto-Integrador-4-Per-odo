@@ -51,6 +51,9 @@ export default function Header() {
         <div className="flex items-center gap-2 sm:gap-4">
           📞 (68) 3661-5533
         </div>
+        <div className="flex items-center gap-2 sm:gap-4">
+          📞 (68) 99257-0977
+        </div>
 
         <div className="flex gap-3 justify-end items-center">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition transform hover:scale-125">
@@ -147,4 +150,5 @@ export default function Header() {
     </header>
   );
 }
+
 
