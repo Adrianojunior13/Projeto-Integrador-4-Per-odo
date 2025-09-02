@@ -1,36 +1,24 @@
-# ----------------------
-# Etapa 1 - Build do app
-# ----------------------
-FROM node:18-alpine AS build
+# Etapa 1: build do Vite
+FROM node:18 AS build
 
-# Define diretório de trabalho
 WORKDIR /app
 
-# Copia arquivos de dependências
 COPY package*.json ./
-
-# Instala dependências
 RUN npm install
 
-# Copia o restante do código
 COPY . .
-
-# Faz o build do Vite
 RUN npm run build
 
-# ----------------------
-# Etapa 2 - Servindo app
-# ----------------------
-FROM nginx:stable-alpine AS production
+# Etapa 2: servidor Node
+FROM node:18
 
-# Remove arquivos padrão do nginx
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /app
 
-# Copia o build do Vite para o nginx
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copia apenas os arquivos necessários
+COPY --from=build /app/dist ./dist
+COPY server.js package*.json ./
 
-# Expondo a porta 80
-EXPOSE 80
+RUN npm install --omit=dev
 
-# Comando para iniciar nginx
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+CMD ["node", "server.js"]
