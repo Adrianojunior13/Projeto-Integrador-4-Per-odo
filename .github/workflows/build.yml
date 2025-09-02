@@ -15,15 +15,14 @@ jobs:
         uses: actions/checkout@v4
 
       #FRONTEND ----------------------------------------------------------------------------
-      - name: dkjd
-        run: ls
-      
+       
       - name: (FRONT) - 🛑 Desligar e remover serviços antigos
         run: docker compose -f docker-compose.dev.yml down --rmi all --volumes || true
+        working-directory: ./app/front
 
       - name: (FRONT) - 🚀 Reconstruir e rodar com Docker Compose (sem cache)
         run: docker compose -f docker-compose.dev.yml up --build -d
-
+        working-directory: ./app/front
 
       # REMOVIDO: - 🧹 Limpeza completa do sistema Docker (era agressivo)
       # - name: (FRONT) - 🧹 Limpeza completa do sistema Docker
