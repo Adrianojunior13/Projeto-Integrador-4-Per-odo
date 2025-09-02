@@ -1,5 +1,9 @@
 // src/api/controllers/pessoaController.js
+import jwt from "jsonwebtoken";
 import Pessoa from "../../database/models/pessoa.js";
+
+// chave secreta (em produção, use variável de ambiente!)
+const JWT_SECRET = process.env.JWT_SECRET || "minha_chave_secreta";
 
 // Criar uma nova pessoa
 export const createPessoa = async (req, res) => {
@@ -61,10 +65,51 @@ export const deletePessoa = async (req, res) => {
     });
 
     if (deleted) {
-      res.status(204).send(); // 204 No Content
+      res.status(204).send();
     } else {
       res.status(404).json({ message: "Pessoa não encontrada" });
     }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Login de pessoa com JWT
+export const loginPessoa = async (req, res) => {
+  try {
+    const { login, senhaHash } = req.body;
+
+    if (!login || !senhaHash) {
+      return res.status(400).json({ error: "Login e senha são obrigatórios" });
+    }
+
+    const pessoa = await Pessoa.findOne({ where: { login } });
+
+    if (!pessoa) {
+      return res.status(404).json({ error: "Usuário não encontrado" });
+    }
+
+    if (pessoa.senhaHash !== senhaHash) {
+      return res.status(401).json({ error: "Senha incorreta" });
+    }
+
+    // Gera o token JWT
+    const token = jwt.sign(
+      { id: pessoa.id, login: pessoa.login },
+      JWT_SECRET,
+      { expiresIn: "300h" } // expira em 300 horas
+    );
+
+    res.status(200).json({
+      message: "Login realizado com sucesso",
+      token,
+      pessoa: {
+        id: pessoa.id,
+        nome: pessoa.nome,
+        login: pessoa.login,
+        idade: pessoa.idade,
+      },
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
